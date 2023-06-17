@@ -1,0 +1,16 @@
+{
+  "name": "nvim-codeowners",
+  "version": "1.0.0",
+  "description": "A nvim plugin for interacting with GitHub's CODEOWNERS file.",
+  "main": "index.js",
+  "keywords": [
+    "github",
+    "codeowners",
+    "nvim"
+  ],
+  "author": "Sebastien LEONCE",
+  "license": "WTFPL",
+  "dependencies": {
+    "github-codeowners": "^0.2.1"
+  }
+}
