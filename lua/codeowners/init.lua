@@ -16,7 +16,8 @@ local function isCodeownersFileExist(file)
 end
 
 function Codeowners.whoBufname()
-  return who(vim.fn.bufname())
+  local bufname = vim.fn.bufname()
+  return who(vim.fn.fnamemodify(bufname, ":."))
 end
 
 function who(file)
