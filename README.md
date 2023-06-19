@@ -19,6 +19,16 @@ use { "SebastienLeonce/nvim-codeowners", run = "npm install" }
 - `CodeownersWho` - shows a codeowner of active file.
 - `CodeownersReset` - resets cache.
 
+## Config
+Default config for the plugin :
+```lua
+
+require("codeowners").setup({
+    codeownersFile = "CODEOWNERS",
+    pattern =  "(@[%S]+)",
+})
+```
+
 ## Hardline Configuration
 
 [nvim-hardline](https://github.com/ojroques/nvim-hardline)

@@ -1,6 +1,11 @@
+local config = require'codeowners.config'
 local Codeowners = {
   cache = {}
 }
+
+function Codeowners.setup(userConfig)
+  config = vim.tbl_deep_extend("force", config, userConfig)
+end
 
 function Codeowners.reset()
   Codeowners.cache = {}
@@ -22,8 +27,7 @@ end
 
 function who(file)
   if not Codeowners.cache[file] then
-    local projectDir = io.popen('git rev-parse --show-toplevel'):read('*line')
-    local codeownersFile = vim.fn.findfile('CODEOWNERS', projectDir)
+    local codeownersFile = config.codeownersFile
 
     if not isCodeownersFileExist(codeownersFile) then
       Codeowners.cache[file] = "Unloved"
@@ -33,7 +37,7 @@ function who(file)
       local output = handle:read('*all')
       handle:close()
       
-      local pattern = "(@[%S]+)"
+      local pattern = config.pattern
       local owner = string.match(output, pattern)
       Codeowners.cache[file] = owner or "Unloved"
     end
